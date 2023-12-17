@@ -1,8 +1,8 @@
+
 body {
     margin: 0;
     background-color: rgb(221, 216, 216);
 }
-
 
 /*
 nav {
@@ -36,11 +36,15 @@ nav a:hover {
 
 Obsolete*/ 
 
+.navbar-space{
+    height: 10vh;
+}
+
 section{
     height: auto;
 }
 
-.recommendation-component{
+.search-component{
     margin:0 auto;
     height: 100%;
     max-width: 90%;
@@ -48,7 +52,7 @@ section{
 }
 
 
-.recommendation-block{
+.search-block{
     background-color: white;
     display: grid;
     grid-template-columns: auto auto auto;
@@ -58,7 +62,7 @@ section{
     border: 5px solid black;
 }
 
-.recommendation{
+.search{
     height: 50vh;
     display: flex;
     flex-direction: column;
@@ -66,41 +70,19 @@ section{
     padding: 2vh;
 }
 
-.recommend-all-btn{
+.search-all-btn{
     display: flex;
     justify-content: center;
     margin: auto;
     padding: 1vh 0 1vh;
 }
 
-.recommend-all-btn a button{
+.search-all-btn button{
     font-size: 2em;
     color: rgb(88, 86, 86);
     background-color: aqua;
-    cursor: pointer;
-    border: 0;
-    width: auto;
-    padding: 10px 0;
 }
 
-.new-product-component{
-    background-color: white;
-    margin:0 auto;
-    height: 100%;
-    max-width: 90%;
-    padding: 0 0 2vh;
-    text-align: center;
-    border: 5px solid black;
-    margin-bottom: 2vh;
-}
-
-.new-product-block{
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 32px;
-    height: auto;
-    padding: 1vh 2vh 2vh;
-}
 
 
 footer{
@@ -131,15 +113,35 @@ footer div ul{
 }
 
 
-.new-product-block .recommendation img{
+
+.search-block .search img{
     width: 100%;
     height: 20vh;
     object-fit: contain;
 }
 
+.queries-box{
+    display: flex;
+    margin:0 auto;
+    height: 100%;
+    max-width: 90%;
+    padding: 2vh 0 2vh;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
 
-.recommendation-block .recommendation img{
-    width: 100%;
-    height: 20vh;
-    object-fit: contain;
+.queries-box form{
+    display: flex;
+    justify-content: center;
+}
+
+.game-name-box{
+    display: flex;
+    padding: 3vw;
+}
+
+.game-genre-box{
+    display: flex;
+    padding: 3vw;
 }

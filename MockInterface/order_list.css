@@ -35,32 +35,31 @@ footer div ul{
     margin: 0; /* Remove margins */
 }
 
-.txn-box{
+.list-of-order-box{
     display: flex;
-    height: 80vh;
+    height: 100%;
     padding:2%;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-.txn-info{
-    border: 2px solid black;
-    width: 50%;
-    background-color: white;
+.list-of-order-info{
+    padding-top: 5vh;
+    width: 70%;
+    height: auto;
     display: flex;
     text-align: center;
     align-items: center;
     flex-direction: column;
 }
 
-.txn-info img{
+.product-order{
     width: 100%;
-    height: 40vh;
-    object-fit: contain;
+    height: 15vh;
+    margin-bottom: 5vh;
+    background-color: gray;
+    display: flex;
 }
 
-.txn-info .confirmed-btn{
-    font-weight: bold;
-    font-size: 1.5em;
-    margin-top: 5vh;
-    width: 20vw;
-}

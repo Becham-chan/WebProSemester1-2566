@@ -1,0 +1,18 @@
+.useroptions{
+    width: 70%;
+    height: 10vh;
+    margin-bottom: 5vh;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.txn-box{
+    width: 70%;
+    height: 10vh;
+    margin-bottom: 5vh;
+    display: flex;
+    background-color: rgb(192, 190, 190);
+    justify-content: space-between;
+    align-items: center;
+}
