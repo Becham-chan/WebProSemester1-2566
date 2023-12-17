@@ -24,8 +24,8 @@ section{
 }
 
 .product-pic img{
-    height: 70%;
-    width: 70%;
+    height: 50%;
+    width: 90%;
     padding-top: 5vh;
     object-fit: cover;
 }
@@ -37,6 +37,7 @@ section{
     border: 2px solid black;
     display: flex;
     flex-direction: column;
+    padding: 0 0 0 1vw;
 }
 
 .product-info .h1box{
@@ -54,11 +55,57 @@ section{
 .prod-price-amount{
     height: 20vh;
     width: 40%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.add-decrease{
+    display: flex;
+    height: 50%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.add-decrease *{
+    margin-left: 1vw;
+    height: auto;
+    width: auto;
+    border-radius: 0;
+    text-align: center;
+}
+
+.add-decrease button{
+    height: 1vh;
+    display: flex;
+    align-items: center;
+}
+
+
+.price-box{
+    display: flex;
+    height: 50%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.price-box *{
+    margin-left: 1vw;
 }
 
 .prod-buy-options{
     height: 20vh;
     width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.prod-buy-options button{
+    margin: 0 5vw 2vw 0;
+    border-radius: 0px;
+    height: auto;
+    width: 10vw;
 }
 
 .prod-genre{
@@ -68,12 +115,13 @@ section{
 }
 
 .prod-genre *{
-    padding: 0 0 0 1vw;
+    padding: 0 1vw 0 0;
 }
 
 .prod-description{
     height: 35vh;
-    width: 100%;
+    width: 97.5%;
+    word-wrap: break-word
 }
 
 footer{

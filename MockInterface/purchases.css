@@ -64,3 +64,12 @@ footer div ul{
     margin-top: 5vh;
     width: 20vw;
 }
+
+.info-box{
+    height: 80%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

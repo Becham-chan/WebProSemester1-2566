@@ -47,7 +47,7 @@ footer div ul{
 
 .list-of-order-info{
     padding-top: 5vh;
-    width: 70%;
+    width: 80%;
     height: auto;
     display: flex;
     text-align: center;
@@ -62,7 +62,8 @@ footer div ul{
     background-color: gray;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    gap: 8vw;
+    padding:1vh;
 }
 
 .product-order *{
@@ -73,4 +74,31 @@ footer div ul{
     height: 90%;
     width: 40%;
     object-fit: contain;
+}
+
+.nextpg-prevpg-btn{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding: 1vh 0 1vh;
+}
+
+.nextpg-prevpg-btn button{
+    font-size: 1.5vw;
+    color: rgb(88, 86, 86);
+    background-color: aqua;
+    cursor: pointer;
+    border: 0;
+    width: auto;
+    padding: 10px 0;
+    border-radius: 15px;
+    height: auto;
+}
+
+.indicate-header{
+    width: 80%;
+    display: flex;
+    gap: 8vw;
+    padding: 5vw 0 2vw 0;
+    justify-content: space-between;
 }

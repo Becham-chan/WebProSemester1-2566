@@ -61,7 +61,7 @@ footer div ul{
 
 .option-box{
     width: 100%;
-    height: 55vh; /*Temporary Height*/
+    height: 45vh; /*Temporary Height*/
     border: 2px solid black;
     display: flex;
     flex-direction: column;

@@ -47,13 +47,14 @@ section{
     display: flex;
     justify-content: center;
     margin: auto;
-    padding: 1vh 0 1vh;
+    padding: 4vh 0 4vh 0;
+    gap: 5vw;
 }
 
-.nextpg-prevpg-btn button{
+.nextpg-prevpg-btn a{
     font-size: 1.5vw;
     color: rgb(88, 86, 86);
-    background-color: aqua;
+    background-color: rgb(215, 248, 248);
     cursor: pointer;
     border: 0;
     width: auto;
@@ -129,11 +130,17 @@ form label{
     padding: 0vh 2vw 0vh 2vw;
 }
 
-form button{
-    display: flex;
-    padding: 3vw;
-    height: 10%;
+form button, a button{
     justify-content: center;
+    height: 5vh;
+    display: flex;
     align-items: center;
-    box-sizing: border-box;
+    background-color: rgb(215, 248, 248);
+}
+
+
+
+form{
+    display: flex;
+    align-items: center;
 }
