@@ -6,6 +6,12 @@ const expressSession = require('express-session')
 const flash = require('connect-flash')
 const path = require('path')
 
+//อัพโหลดรูป (สำหรับ POST เท่านั้น)
+const fileUpload = require('express-fileupload');
+app.use(fileUpload());
+//const multer = require('multer');
+//const fs = require('fs');
+
 //ต่อ mongoDB
 
 mongoose.connect('mongodb+srv://admin:1234@cluster1234.miityi3.mongodb.net/?retryWrites=true&w=majority', {
@@ -22,6 +28,8 @@ const storeUserController = require('./controllers/storeUserController')
 const loginUserController = require('./controllers/loginUserController')
 const logoutController = require('./controllers/logoutController')
 const homeController = require('./controllers/homeController')
+const mockinputController = require('./controllers/mockinputController')
+const mockinputUploadController = require('./controllers/mockinputUploadController')
 
 //Middleware
 const redirectIfAuth = require('./middleware/redirectIfAuth')
@@ -86,8 +94,33 @@ const users = [
 //set static folder
 //app.use(express.static(path.join(__dirname, 'public')));
 
+//อัพโหลดรูป POST
+app.get('/mockinput', mockinputController)
+app.post('/upload', mockinputUploadController);
+
+// const storage = multer.memoryStorage(); // Store the file in memory
+// const upload = multer({ storage: storage });
+// const imageBuffer = fs.readFileSync('./anis.png');
+// console.log(imageBuffer)
+
+// app.post('/upload', upload.single('image'), async (req, res) => {
+//     try {
+//       const newImage = new Image({
+//         data: req.file.buffer,
+//         contentType: req.file.mimetype,
+//       });
+  
+//       await newImage.save();
+  
+//       res.status(201).send('Image uploaded successfully');
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).send('Internal Server Error');
+//     }
+//   });
 
 const PORT = process.ENV || 5000;
+
 
 
 app.listen(PORT, () => console.log(`sever running on port ${PORT}`));

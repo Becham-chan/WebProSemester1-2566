@@ -1,6 +1,7 @@
 const User = require('../models/User')
 
 module.exports = (req, res) =>{
+    //console.log(req.body)
     User.create(req.body).then(()=>{
         console.log("User registered successfully!")
         res.redirect('/')
