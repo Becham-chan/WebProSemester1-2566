@@ -53,27 +53,45 @@ footer div ul{
     display: flex;
     padding: 5%;
     width: 50%;
-    height: auto;
+    height: 100%;
     box-sizing: unset;
+    flex-direction: column;
+    text-align: center;
 }
 
 .option-box{
     width: 100%;
     height: 55vh; /*Temporary Height*/
-    border: 1px solid black;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
 }
 
 .display-box{
     width: 100%;
     height: auto; /*Temporary Height*/
-    border: 1px solid black;
 }
 
 .userinfo{
     width: 100%;
     display: flex;
     height: 15vh;
-    flex-wrap: wrap;
+}
+
+.prof-pic{
+    width: 45%;
+    height: 100%;
+    object-fit: fill;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.prof-pic img{
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: fill;
+    border-radius: 180px;
 }
 
 .option-box a{
@@ -81,10 +99,63 @@ footer div ul{
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1.5vw;
     color: black;
     text-decoration: none;
     width: 100%;
     height: 10vh;
     background-color: rgb(255, 255, 175);
+}
+
+.email-box{
+    width: 55%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.email-box h2{
+    padding: 1vh 0vw;
+    font-size: 1vw;
+    width: fit-content;
+    height: auto;
+    word-wrap: break-word;
+}
+
+.display-box h1{
+    padding-bottom: 5vh;
+    font-size: 2vw;
+}
+
+.change-box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.change-box label{
+    font-size: 1.5vw;
+    font-weight: bold;
+    padding: 2vh 0vw 5vh 2vw;
+}
+
+form .change-box input{
+    width: 75%;
+    margin: 0vh 0vw 0vh 5vw;
+    height: 5vh;
+    font-size: 1vw;
+}
+
+.submit-button-holder{
+    margin: 3vh 0vw 0vh 0vw;
+    display: flex;
+    justify-content: center;
+}
+
+.submit-button-holder input{
+    width: 25%;
+    height: 5vh;
 }

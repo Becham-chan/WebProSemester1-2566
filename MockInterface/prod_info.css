@@ -10,7 +10,7 @@ section{
 
 .product-component{
     display: flex;
-    height: 80vh;
+    height: 100%;
     padding:2%;
 }
 
@@ -24,8 +24,8 @@ section{
 }
 
 .product-pic img{
-    height: 30vh;
-    width: 30vw;
+    height: 70%;
+    width: 70%;
     padding-top: 5vh;
     object-fit: cover;
 }
@@ -59,6 +59,16 @@ section{
 .prod-buy-options{
     height: 20vh;
     width: 60%;
+}
+
+.prod-genre{
+    display: flex;
+    height: 5vh;
+    width: 100%;
+}
+
+.prod-genre *{
+    padding: 0 0 0 1vw;
 }
 
 .prod-description{

@@ -29,8 +29,14 @@
         <div class="option-flex">
             <div class="option-box">
               <div class="userinfo">
-                <div class="prof-pic"></div>
-                <div class="email-box"></div>
+                <div class="prof-pic">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/DandelionFlower.jpg/1200px-DandelionFlower.jpg">
+                </div>
+                <div class="email-box">
+                  <h2>บัญชีของฉัน</h2>
+                  <h2>{ชื่อผู้ใช้}</h2>
+                  <h2>kunberab@gmail.com</h2> <!-- email too long overflowed-->
+                </div>
               </div>
               <a href="#LIV8-0MU">ข้อมูลส่วนตัว</a>
               <a href="#LIV8-0MU">รายการชำระเงิน</a>
@@ -39,7 +45,26 @@
             </div>
         </div>
         <div class="display-flex">
-            <div class="display-box"></div>
+            <div class="display-box">
+              <h1>ข้อมูลส่วนตัว</h1>
+              <form>
+                <div class="change-box">
+                  <label for="user-change">ชื่อ</label>
+                  <input type="text" id="user-change" name="user-change" placeholder="บัญชีของฉัน"/><br/>
+                </div>
+                <div class="change-box">
+                  <label for="email-change">อีเมล</label>
+                  <input type="text" id="email-change" name="email-change" placeholder="อีเมลของฉัน"/><br/>
+                </div>
+                <div class="change-box">
+                  <label for="tel-no-change">เบอร์โทรศัพท์</label>
+                  <input type="text" id="tel-no-change" name="tel-no-change" placeholder="เบอร์โทรศัพท์ของฉัน"/><br/>
+                </div>
+                <div class="submit-button-holder">
+                  <input type="submit">
+                </div>
+              </form>
+            </div>
         </div>
       </div>
     </section>

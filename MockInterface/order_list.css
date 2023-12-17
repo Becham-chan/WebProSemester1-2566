@@ -61,5 +61,16 @@ footer div ul{
     margin-bottom: 5vh;
     background-color: gray;
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
+.product-order *{
+    padding-left: 1vw;
+}
+
+.product-order img{
+    height: 90%;
+    width: 40%;
+    object-fit: contain;
+}

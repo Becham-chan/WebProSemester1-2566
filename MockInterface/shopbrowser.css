@@ -4,37 +4,6 @@ body {
     background-color: rgb(221, 216, 216);
 }
 
-/*
-nav {
-    background-color: #333;
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    height: 10vh;
-    color: white;
-    background-color: gray;
-}
-
-nav a {
-    float: left;
-    display: block;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    color: white;
-}
-
-nav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-.navbar-toggle {
-    display: none;
-}
-
-Obsolete*/ 
 
 .navbar-space{
     height: 10vh;
@@ -67,20 +36,29 @@ section{
     display: flex;
     flex-direction: column;
     text-align: center;
+    align-items: center;
     padding: 2vh;
+    background-color: rgb(235, 235, 235);
+    text-decoration: none;
+    color: black;
 }
 
-.search-all-btn{
+.nextpg-prevpg-btn{
     display: flex;
     justify-content: center;
     margin: auto;
     padding: 1vh 0 1vh;
 }
 
-.search-all-btn button{
-    font-size: 2em;
+.nextpg-prevpg-btn button{
+    font-size: 1.5vw;
     color: rgb(88, 86, 86);
     background-color: aqua;
+    cursor: pointer;
+    border: 0;
+    width: auto;
+    padding: 10px 0;
+    border-radius: 15px;
 }
 
 
@@ -115,9 +93,9 @@ footer div ul{
 
 
 .search-block .search img{
-    width: 100%;
-    height: 20vh;
-    object-fit: contain;
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
 }
 
 .queries-box{
@@ -144,4 +122,18 @@ footer div ul{
 .game-genre-box{
     display: flex;
     padding: 3vw;
+}
+
+
+form label{
+    padding: 0vh 2vw 0vh 2vw;
+}
+
+form button{
+    display: flex;
+    padding: 3vw;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
 }

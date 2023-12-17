@@ -62,8 +62,12 @@ section{
     height: 50vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: center;
     padding: 2vh;
+    background-color: rgb(235, 235, 235);
+    text-decoration: none;
+    color: black;
 }
 
 .recommend-all-btn{
@@ -71,16 +75,18 @@ section{
     justify-content: center;
     margin: auto;
     padding: 1vh 0 1vh;
+    text-decoration: none;
 }
 
 .recommend-all-btn a button{
-    font-size: 2em;
+    font-size: 2vw;
     color: rgb(88, 86, 86);
     background-color: aqua;
     cursor: pointer;
     border: 0;
     width: auto;
     padding: 10px 0;
+    border-radius: 15px;
 }
 
 .new-product-component{
@@ -133,13 +139,15 @@ footer div ul{
 
 .new-product-block .recommendation img{
     width: 100%;
-    height: 20vh;
-    object-fit: contain;
+    height: 30vh;
+    object-fit: cover;
+    margin-bottom: 5vh;
 }
 
 
 .recommendation-block .recommendation img{
     width: 100%;
-    height: 20vh;
-    object-fit: contain;
+    height: 30vh;
+    object-fit: cover;
+    margin-bottom: 5vh;
 }
