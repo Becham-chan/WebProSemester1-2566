@@ -20,7 +20,7 @@
 
             <% if (loggedIn) { %>
                 <!-- <li><a href="/logout">LOOUT</a></li> -->
-                <li><a class="reg button" href="/logout" style="color: rgb(255, 255, 255);">LOGOUT</a></li>
+                <li><a class="logout button" href="/logout" style="color: rgb(255, 255, 255);">LOGOUT</a></li>
                 <% } %>
         
                 <% if (!loggedIn) { %>
@@ -31,12 +31,15 @@
                     
                 <% } %>
 
-                <!-- <li><a href="/login">LOGIN</a></li> -->
-            <!-- <li><button class="reg" a href="/register">SIGN UP</button></li> -->
+            <!-- <li><a href="/login">LOGIN</a></li> -->
+
+            <!-- <li><a href="/register">SIGN UP</a></li> -->
 
         </ul>
 
     </header>
-    <h1 style="border: 5px solid black;padding: 10px;margin-left: 10px;margin-top: 40px;border-radius: 10%;display: inline-block;">เข้าสู่ระบบซื้อคีย์เกมสุดพรีเมี่ยม</h1>
+
+    <h1>Welcome, <%= UserData.username %></h1>
+    <h3>จะเห็นหน้านี้ก็ต่อเมื่อ เป็นสมาชิก</h3>
 </body>
 </html>

@@ -1,3 +1,5 @@
+
+//ต้อง login แล้วเท่านั้นถึงจะเห็นหน้าดังกล่าว ไม่งั้น redirect
 const User = require('../models/User')
 
 module.exports = (req, res, next) =>{
