@@ -64,6 +64,7 @@ footer div ul{
     align-items: center;
     gap: 8vw;
     padding:1vh;
+    justify-content: space-between;
 }
 
 .product-order *{
@@ -71,7 +72,7 @@ footer div ul{
 }
 
 .product-order img{
-    height: 90%;
+    height: 14vh;
     width: 40%;
     object-fit: contain;
 }
@@ -98,7 +99,10 @@ footer div ul{
 .indicate-header{
     width: 80%;
     display: flex;
-    gap: 8vw;
-    padding: 5vw 0 2vw 0;
+    padding: 5vh 0 2vh 5vw;
     justify-content: space-between;
+}
+
+.indicate-header h1:first-child{
+    padding-right: 2vw;
 }
