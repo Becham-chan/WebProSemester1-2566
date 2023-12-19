@@ -4,6 +4,7 @@ import axios from "axios";
 
 export default function OrdersPage() {
   const [orders,setOrders] = useState([]);
+    
   useEffect(() => {
     axios.get('/api/orders').then(response => {
       setOrders(response.data);
@@ -22,8 +23,8 @@ export default function OrdersPage() {
           </tr>
         </thead>
         <tbody>
-        {orders.length > 0 && orders.map(order => (
-          <tr key={order._id}>
+        {orders.length > 0 && orders.map((order, index) => (
+            <tr key={order._id} className={index < orders.length - 1 ? 'border-b' : ''}>
             <td>{(new Date(order.createdAt)).toLocaleString()}
             </td>
             <td className={order.paid ? 'text-green-600' : 'text-red-600'}>
@@ -35,8 +36,8 @@ export default function OrdersPage() {
             <td>
               {order.line_items.map(l => (
                 <>
-                  {l.price_data?.product_data.name} x
-                  {l.quantity}<br />
+                  [#]{l.price_data?.product_data.name} 
+                  <br />
                 </>
               ))}
             </td>

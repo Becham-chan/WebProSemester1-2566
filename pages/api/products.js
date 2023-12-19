@@ -55,7 +55,7 @@ export default async function handle(req, res) {
 async function generateCDKeys(count) {
   const generatedKeys = [];
   for (let i = 0; i < count; i++) {
-    generatedKeys.push("generated_cd_key_" + i);
+    generatedKeys.push("generated_cd_key");
   }
   return generatedKeys;
 }

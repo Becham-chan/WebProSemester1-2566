@@ -72,14 +72,16 @@ function Categories({swal}) {
       return [...prev, {name:'',values:''}];
     });
   }
-  function handlePropertyNameChange(index,category,newName) {
-    setCategories(prev => {
-      const categories = [...prev];
-      categories[index].name = newName;
-      return categories;
+  const handlePropertyChange = (index, propertyName, newValue) => {
+    setCategories(prevCategories => {
+      const updatedCategories = [...prevCategories];
+      updatedCategories[index] = { ...updatedCategories[index], [propertyName]: newValue };
+      return updatedCategories;
     });
-  }
-  function handlePropertyValuesChange(index,category,newValues) {
+  };
+  
+
+  function handlePropertyValuesChange(index,platform,newValues) {
     setCategories(prev => {
       const categories = [...prev];
       categories[index].values = newValues;
@@ -125,22 +127,23 @@ function Categories({swal}) {
             className="btn-default text-sm mb-2">
             Add new category
           </button>
-          {categories.length > 0 && categories.map((category,index) => (
-            <div key={category.name} className="flex gap-1 mb-2">
-              <input type="text"
-                     value={category.name}
-                     className="mb-0"
-                     onChange={ev => handlePropertyNameChange(index,category,ev.target.value)}
-                     placeholder="category name (example: Action)"/>
-              <input type=""
-                     className="mb-0"
-                     onChange={ev =>
-                       handlePropertyValuesChange(
-                         index,
-                         category,ev.target.value
-                       )}
-                     value={category.values}
-                     placeholder="values, comma separated"/>
+          {categories.length > 0 && categories.map((platform,index) => (
+            <div key={platform.name} className="flex gap-1 mb-2">
+<input
+  type="text"
+  className="mb-0"
+  onChange={ev => handlePropertyChange(index, 'name', ev.target.value)}
+  value={platform.name}
+  placeholder="category name (example: Action)"
+/>
+<input
+  type="text"
+  className="mb-0"
+  onChange={ev => handlePropertyChange(index, 'values', ev.target.value)}
+  value={platform.values}
+  placeholder="values, comma separated"
+/>
+
               <button
                 onClick={() => removeProperty(index)}
                 type="button"
@@ -164,6 +167,9 @@ function Categories({swal}) {
           )}
           <button type="submit"
                   className="btn-primary py-1">
+              <svg svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" data-slot="icon" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
             Save
           </button>
         </div>
@@ -178,19 +184,19 @@ function Categories({swal}) {
           </tr>
           </thead>
           <tbody>
-          {platforms.length > 0 && platforms.map(category => (
-            <tr key={category._id}>
-              <td>{category.name}</td>
-              <td>{category?.parent?.name}</td>
+          {platforms.length > 0 && platforms.map(platforms => (
+            <tr key={platforms._id}>
+              <td>{platforms.name}</td>
+              <td>{platforms?.parent?.name}</td>
               <td>
                 <button
-                  onClick={() => editCategory(category)}
+                  onClick={() => editCategory(platforms)}
                   className="btn-default mr-1"
                 >
                   Edit
                 </button>
                 <button
-                  onClick={() => deleteCategory(category)}
+                  onClick={() => deleteCategory(platforms)}
                   className="btn-red">Delete</button>
               </td>
             </tr>
