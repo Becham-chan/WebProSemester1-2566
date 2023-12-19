@@ -1,4 +1,4 @@
-import {Category} from "@/models/Category";
+import {Platform} from "@/models/Platform";
 import {mongooseConnect} from "@/lib/mongoose";
 import {getServerSession} from "next-auth";
 import {authOptions, isAdminRequest} from "@/pages/api/auth/[...nextauth]";
@@ -9,32 +9,32 @@ export default async function handle(req, res) {
   await isAdminRequest(req,res);
 
   if (method === 'GET') {
-    res.json(await Category.find().populate('parent'));
+    res.json(await Platform.find().populate('parent'));
   }
 
   if (method === 'POST') {
-    const {name,parentCategory,properties} = req.body;
-    const categoryDoc = await Category.create({
+    const {name,parentCategory,category} = req.body;
+    const categoryDoc = await Platform.create({
       name,
       parent: parentCategory || undefined,
-      properties,
+      category,
     });
     res.json(categoryDoc);
   }
 
   if (method === 'PUT') {
-    const {name,parentCategory,properties,_id} = req.body;
-    const categoryDoc = await Category.updateOne({_id},{
+    const {name,parentCategory,category,_id} = req.body;
+    const categoryDoc = await Platform.updateOne({_id},{
       name,
       parent: parentCategory || undefined,
-      properties,
+      category,
     });
     res.json(categoryDoc);
   }
 
   if (method === 'DELETE') {
     const {_id} = req.query;
-    await Category.deleteOne({_id});
+    await Platform.deleteOne({_id});
     res.json('ok');
   }
 }

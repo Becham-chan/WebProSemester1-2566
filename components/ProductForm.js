@@ -10,29 +10,29 @@ export default function ProductForm({
   description:existingDescription,
   price:existingPrice,
   images:existingImages,
+  platform:assignedPlatform,
   category:assignedCategory,
-  properties:assignedProperties,
 }) {
   const [title,setTitle] = useState(existingTitle || '');
   const [description,setDescription] = useState(existingDescription || '');
-  const [category,setCategory] = useState(assignedCategory || '');
-  const [productProperties,setProductProperties] = useState(assignedProperties || {});
+  const [platform,setPlatform] = useState(assignedPlatform || '');
+  const [productCategory,setProductCategory] = useState(assignedCategory || {});
   const [price,setPrice] = useState(existingPrice || '');
   const [images,setImages] = useState(existingImages || []);
   const [goToProducts,setGoToProducts] = useState(false);
   const [isUploading,setIsUploading] = useState(false);
-  const [categories,setCategories] = useState([]);
+  const [platforms,setPlatforms] = useState([]);
   const router = useRouter();
   useEffect(() => {
     axios.get('/api/categories').then(result => {
-      setCategories(result.data);
+      setPlatforms(result.data);
     })
   }, []);
   async function saveProduct(ev) {
     ev.preventDefault();
     const data = {
-      title,description,price,images,category,
-      properties:productProperties
+      title,description,price,images,platform,
+      category:productCategory
     };
     if (_id) {
       //update
@@ -65,7 +65,7 @@ export default function ProductForm({
     setImages(images);
   }
   function setProductProp(propName,value) {
-    setProductProperties(prev => {
+    setProductCategory(prev => {
       const newProductProps = {...prev};
       newProductProps[propName] = value;
       return newProductProps;
@@ -73,12 +73,12 @@ export default function ProductForm({
   }
 
   const propertiesToFill = [];
-  if (categories.length > 0 && category) {
-    let catInfo = categories.find(({_id}) => _id === category);
-    propertiesToFill.push(...catInfo.properties);
+  if (platforms.length > 0 && platform) {
+    let catInfo = platforms.find(({_id}) => _id === platform);
+    propertiesToFill.push(...catInfo.category);
     while(catInfo?.parent?._id) {
-      const parentCat = categories.find(({_id}) => _id === catInfo?.parent?._id);
-      propertiesToFill.push(...parentCat.properties);
+      const parentCat = platforms.find(({_id}) => _id === catInfo?.parent?._id);
+      propertiesToFill.push(...parentCat.category);
       catInfo = parentCat;
     }
   }
@@ -91,11 +91,11 @@ export default function ProductForm({
           placeholder="product name"
           value={title}
           onChange={ev => setTitle(ev.target.value)}/>
-        <label>Category</label>
-        <select value={category}
-                onChange={ev => setCategory(ev.target.value)}>
+        <label>Platform</label>
+        <select value={platform}
+                onChange={ev => setPlatform(ev.target.value)}>
           <option value="">Uncategorized</option>
-          {categories.length > 0 && categories.map(c => (
+          {platforms.length > 0 && platforms.map(c => (
             <option key={c._id} value={c._id}>{c.name}</option>
           ))}
         </select>
@@ -103,7 +103,7 @@ export default function ProductForm({
           <div key={p.name} className="">
             <label>{p.name[0].toUpperCase()+p.name.substring(1)}</label>
             <div>
-              <select value={productProperties[p.name]}
+              <select value={productCategory[p.name]}
                       onChange={ev =>
                         setProductProp(p.name,ev.target.value)
                       }
@@ -116,7 +116,7 @@ export default function ProductForm({
           </div>
         ))}
         <label>
-          Photos
+          Image
         </label>
         <div className="mb-2 flex flex-wrap gap-1">
           <ReactSortable
@@ -150,7 +150,7 @@ export default function ProductForm({
           value={description}
           onChange={ev => setDescription(ev.target.value)}
         />
-        <label>Price (in USD)</label>
+        <label>Price (in THB)</label>
         <input
           type="number" placeholder="price"
           value={price}

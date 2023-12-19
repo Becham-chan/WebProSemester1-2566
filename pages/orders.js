@@ -31,8 +31,6 @@ export default function OrdersPage() {
             </td>
             <td>
               {order.name} {order.email}<br />
-              {order.city} {order.postalCode} {order.country}<br />
-              {order.streetAddress}
             </td>
             <td>
               {order.line_items.map(l => (

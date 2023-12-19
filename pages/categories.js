@@ -7,14 +7,14 @@ function Categories({swal}) {
   const [editedCategory, setEditedCategory] = useState(null);
   const [name,setName] = useState('');
   const [parentCategory,setParentCategory] = useState('');
+  const [platforms,setPlatforms] = useState([]);
   const [categories,setCategories] = useState([]);
-  const [properties,setProperties] = useState([]);
   useEffect(() => {
     fetchCategories();
   }, [])
   function fetchCategories() {
     axios.get('/api/categories').then(result => {
-      setCategories(result.data);
+      setPlatforms(result.data);
     });
   }
   async function saveCategory(ev){
@@ -22,7 +22,7 @@ function Categories({swal}) {
     const data = {
       name,
       parentCategory,
-      properties:properties.map(p => ({
+      categories:categories.map(p => ({
         name:p.name,
         values:p.values.split(','),
       })),
@@ -36,24 +36,24 @@ function Categories({swal}) {
     }
     setName('');
     setParentCategory('');
-    setProperties([]);
+    setCategories([]);
     fetchCategories();
   }
-  function editCategory(category){
-    setEditedCategory(category);
-    setName(category.name);
-    setParentCategory(category.parent?._id);
-    setProperties(
-      category.properties.map(({name,values}) => ({
+  function editCategory(platform){
+    setEditedCategory(platform);
+    setName(platform.name);
+    setParentCategory(platform.parent?._id);
+    setCategories(
+      platform.category.map(({name,values}) => ({
       name,
       values:values.join(',')
     }))
     );
   }
-  function deleteCategory(category){
+  function deleteCategory(platform){
     swal.fire({
       title: 'Are you sure?',
-      text: `Do you want to delete ${category.name}?`,
+      text: `Do you want to delete ${platform.name}?`,
       showCancelButton: true,
       cancelButtonText: 'Cancel',
       confirmButtonText: 'Yes, Delete!',
@@ -61,33 +61,33 @@ function Categories({swal}) {
       reverseButtons: true,
     }).then(async result => {
       if (result.isConfirmed) {
-        const {_id} = category;
+        const {_id} = platform;
         await axios.delete('/api/categories?_id='+_id);
         fetchCategories();
       }
     });
   }
   function addProperty() {
-    setProperties(prev => {
+    setCategories(prev => {
       return [...prev, {name:'',values:''}];
     });
   }
-  function handlePropertyNameChange(index,property,newName) {
-    setProperties(prev => {
-      const properties = [...prev];
-      properties[index].name = newName;
-      return properties;
+  function handlePropertyNameChange(index,category,newName) {
+    setCategories(prev => {
+      const categories = [...prev];
+      categories[index].name = newName;
+      return categories;
     });
   }
-  function handlePropertyValuesChange(index,property,newValues) {
-    setProperties(prev => {
-      const properties = [...prev];
-      properties[index].values = newValues;
-      return properties;
+  function handlePropertyValuesChange(index,category,newValues) {
+    setCategories(prev => {
+      const categories = [...prev];
+      categories[index].values = newValues;
+      return categories;
     });
   }
   function removeProperty(indexToRemove) {
-    setProperties(prev => {
+    setCategories(prev => {
       return [...prev].filter((p,pIndex) => {
         return pIndex !== indexToRemove;
       });
@@ -95,51 +95,51 @@ function Categories({swal}) {
   }
   return (
     <Layout>
-      <h1>Categories</h1>
+      <h1>Platforms</h1>
       <label>
         {editedCategory
           ? `Edit category ${editedCategory.name}`
-          : 'Create new category'}
+          : 'Create new platform'}
       </label>
       <form onSubmit={saveCategory}>
         <div className="flex gap-1">
           <input
             type="text"
-            placeholder={'Category name'}
+            placeholder={'Platform name'}
             onChange={ev => setName(ev.target.value)}
             value={name}/>
           <select
                   onChange={ev => setParentCategory(ev.target.value)}
                   value={parentCategory}>
-            <option value="">No parent category</option>
-            {categories.length > 0 && categories.map(category => (
-              <option key={category._id} value={category._id}>{category.name}</option>
+            <option value="">No parent platform</option>
+            {platforms.length > 0 && platforms.map(platform => (
+              <option key={platform._id} value={platform._id}>{platform.name}</option>
             ))}
           </select>
         </div>
         <div className="mb-2">
-          <label className="block">Properties</label>
+          <label className="block">Category</label>
           <button
             onClick={addProperty}
             type="button"
             className="btn-default text-sm mb-2">
-            Add new property
+            Add new category
           </button>
-          {properties.length > 0 && properties.map((property,index) => (
-            <div key={property.name} className="flex gap-1 mb-2">
+          {categories.length > 0 && categories.map((category,index) => (
+            <div key={category.name} className="flex gap-1 mb-2">
               <input type="text"
-                     value={property.name}
+                     value={category.name}
                      className="mb-0"
-                     onChange={ev => handlePropertyNameChange(index,property,ev.target.value)}
-                     placeholder="property name (example: color)"/>
-              <input type="text"
+                     onChange={ev => handlePropertyNameChange(index,category,ev.target.value)}
+                     placeholder="category name (example: Action)"/>
+              <input type=""
                      className="mb-0"
                      onChange={ev =>
                        handlePropertyValuesChange(
                          index,
-                         property,ev.target.value
+                         category,ev.target.value
                        )}
-                     value={property.values}
+                     value={category.values}
                      placeholder="values, comma separated"/>
               <button
                 onClick={() => removeProperty(index)}
@@ -158,7 +158,7 @@ function Categories({swal}) {
                 setEditedCategory(null);
                 setName('');
                 setParentCategory('');
-                setProperties([]);
+                setCategories([]);
               }}
               className="btn-default">Cancel</button>
           )}
@@ -172,13 +172,13 @@ function Categories({swal}) {
         <table className="basic mt-4">
           <thead>
           <tr>
-            <td>Category name</td>
-            <td>Parent category</td>
+            <td>Platform name</td>
+            <td>Parent Platform</td>
             <td></td>
           </tr>
           </thead>
           <tbody>
-          {categories.length > 0 && categories.map(category => (
+          {platforms.length > 0 && platforms.map(category => (
             <tr key={category._id}>
               <td>{category.name}</td>
               <td>{category?.parent?.name}</td>
