@@ -24,4 +24,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+
+    background: linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(93,44,152,1) 7%, rgba(63,81,168,1) 8%, rgba(95,84,169,1) 10%, rgba(169,208,255,1) 32%,
+     rgba(100,178,208,1) 60%, rgba(70,136,219,1) 84%, rgba(96,173,209,1) 85%, rgba(50,44,152,1) 92%, rgba(0,0,0,1) 100%);
 }
