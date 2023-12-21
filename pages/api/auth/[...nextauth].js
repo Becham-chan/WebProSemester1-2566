@@ -23,12 +23,13 @@ export const authOptions = {
         let mail = user['email'];
         // Brute way to get element : console.log(user["name"], user["email"]);
         //axios.post("/api/admin", {name, mail});
-        MySQL.connect();
         MySQL.query("Insert into administrator (Admin_name, Admin_email) values (?, ?)", [name, mail], function (err, result, fields) {
-          if (err) throw err;
-          console.log(result);
+          if (err) throw "admin inserting error"; // originally throw err
+          console.log("Successfully Recorded admin info");
         });
-        MySQL.end();
+        MySQL.query("SET SQL_SAFE_UPDATES = 0;", function (err, result, fields) {
+          if (err) throw "admin inserting error"; // originally throw err
+        });
         return session;
       } else {
         return false;
