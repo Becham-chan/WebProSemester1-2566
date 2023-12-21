@@ -97,7 +97,6 @@ export default async function handle(req, res) {
     let oldPlatName = oldplat.name;
     let oldPrice = oldOne.price;
 
-    console.log([newPlatName, title, description, price, oldOne.title, oldDesc, oldPlatName, oldOne.price]);
     // Update Method
 
 
@@ -125,10 +124,12 @@ export default async function handle(req, res) {
       let prodDesc = resultJson.description;
       let prodPlatID = resultJson.platform;
       let prodPrice = resultJson.price;
-      const platformResult = Platform.findOne({_id: prodPlatID});
+      const platformresult = await Platform.findOne({_id: prodPlatID});
+      const platformResult = JSON.parse(JSON.stringify(platformresult));
       let prodPlatform = platformResult.name;
-      
-      MySQL.query("DELETE FROM products WHERE Product_name=? and Product_desc=? and Platform_ID=? and Price=?", 
+      console.log(prodName, prodDesc, prodPlatID, prodPrice, prodPlatform);
+      MySQL.query("DELETE FROM products WHERE Product_name=? and Product_desc=? and Platform_ID=(SELECT Platform_ID from platform where platform_name = ?)" + 
+      " and Price=?", 
       [prodName, prodDesc, prodPlatform ,prodPrice], function (err, result, fields) {
         if (err) throw err;
         console.log("Deletion Success");
