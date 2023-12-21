@@ -102,9 +102,9 @@ export default async function handle(req, res) {
 
 
     // Update with mysql
-    MySQL.query("update products set platform_id = (select platform_id from platform where platform_name = ?)"
-      + ", product_name=?, product_desc=?, price=?  where Product_name =? and Product_desc = ?"
-      +" and platform_id =(select platform_id from platform where platform_name = ?) and price = ?; ",
+    MySQL.query("UPDATE products SET Platform_id = (SELECT Platform_id FROM platform WHERE Platform_name = ?)"
+      + ", Product_name=?, Product_desc=?, Price=? WHERE Product_name =? AND Product_desc = ?"
+      +" AND Platform_id =(SELECT Platform_id FROM Platform WHERE Platform_name = ?) AND Price = ?; ",
        [newPlatName, title, description, price, oldName, oldDesc, oldPlatName, oldPrice],
         function (err, result, fields) {
       if (err) throw err;
