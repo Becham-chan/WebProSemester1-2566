@@ -126,14 +126,23 @@ export default async function handle(req, res) {
       let prodPrice = resultJson.price;
       const platformresult = await Platform.findOne({_id: prodPlatID});
       const platformResult = JSON.parse(JSON.stringify(platformresult));
-      let prodPlatform = platformResult.name;
-      console.log(prodName, prodDesc, prodPlatID, prodPrice, prodPlatform);
-      MySQL.query("DELETE FROM products WHERE Product_name=? and Product_desc=? and Platform_ID=(SELECT Platform_ID from platform where platform_name = ?)" + 
-      " and Price=?", 
-      [prodName, prodDesc, prodPlatform ,prodPrice], function (err, result, fields) {
-        if (err) throw err;
-        console.log("Deletion Success");
-      }); 
+      let prodPlatform;
+      if (platformResult === null){
+        MySQL.query("DELETE FROM products WHERE Product_name=? and Product_desc=? and Platform_ID is null and Price=?", 
+        [prodName, prodDesc, prodPrice], function (err, result, fields) {
+          if (err) throw err;
+          console.log("Found Platform_id IS NULL");
+        }); 
+      }
+      else
+        {prodPlatform = platformResult.name;
+        MySQL.query("DELETE FROM products WHERE Product_name=? and Product_desc=? and Platform_ID=(SELECT Platform_ID from platform where platform_name = ?)" + 
+        " and Price=?", 
+        [prodName, prodDesc, prodPlatform ,prodPrice], function (err, result, fields) {
+          if (err) throw err;
+          console.log("Deletion Success");
+        }); 
+      }
 
       await Product.deleteOne({ _id: req.query?.id });
       res.json(true);
